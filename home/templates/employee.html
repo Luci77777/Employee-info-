@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #009688; /* teal color for links */
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #00796b; /* darker teal on hover */
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 39px;
+            box-shadow: 32px 21px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(50% - 5px); /* Adjusted width */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            display: inline-block; /* Display input fields inline */
+        }
+    
+        input[type="submit"] {
+            background-color: #009688;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        input[type="submit"]:hover {
+            background-color: #00796b; /* darker teal on hover */
+        }
+    
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            border: 1px solid #ccc; /* Added border */
+        }
+    
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+        }
+    
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    
+        /* Styling for delete button */
+        .delete-btn {
+            background-color: #ff3333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 4px 0px 0px rgba(0,0,0,0.3);
+
+        }
+
+        .delete-btn:active{
+            box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.3); /* Push inside */
+            transform: translateX(3px); 
+        }
+    
+        .delete-btn:hover {
+            background-color: #ec1b17; /* darker red on hover */
+            color: white;
+        }
+    
+        /* Styling for update button */
+        .update-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .update-btn:hover {
+            background-color: #0056b3; /* darker blue on hover */
+        }
+        
+        header {
+            text-align: center;
+        }
+
+        .btn-primary{
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 0px 0px rgba(0,0,0,0.3);
+            border-radius: 4px
+        }
+
+        /* Hover effect */
+        .btn-primary:hover {
+        background-color: #45a049; /* Darker green */
+        }
+
+        /* Active effect */
+        .btn-primary:active {
+            box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.3); /* Push inside */
+            transform: translateY(3px); 
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/admin/">Admin</a>
+        /
+        <a href="/about/">About</a>
+        /
+        <a href="/contact/">Contact</a>
+        /
+        <a href="/">Home</a>
+
+    </header>
+
+    <div class="container mt-5">
+
+        <form class="col-6 mx-auto card" method="post">
+            {%csrf_token%}
+
+            <h2>Add employee</h2>
+            <hr>
+
+            <form>
+                <div class="form-group">
+                    <label for="employee_name">Employee Name</label>
+                    <input id="employee_name" name="employee_name" type="text" required class="form-control" placeholder="Enter Employee Name">
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <label for="employee_id">Employee ID</label>
+                    <input type="text" id="employee_id" name="employee_id" class="form-control" placeholder="Enter Employee ID" required>
+                    <!-- <textarea id="employee_id" name="employee_id" class="form-control" placeholder="Enter Employee id" required></textarea> -->
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <label for="hours_worked">Hours Worked</label>
+                    <input id="hours_worked" name="hours_worked" type="text" required class="form-control" placeholder="Enter Hours Worked">
+                </div>
+                <hr>
+
+                <div class="form-group">
+                    <label for="overtime_hours">Overtime Hours</label>
+                    <input id="overtime_hours" name="overtime_hours" type="text" required class="form-control" placeholder="Enter Overtime Hours">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn-primary">Submit</button>
+                </div>
+            </form>
+
+
+        </form>
+
+
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" style="border: 1px solid #ccc;">S.No</th>
+                <th scope="col" style="border: 1px solid #ccc;">Employee Name</th>
+                <th scope="col" style="border: 1px solid #ccc;">Employee ID</th>
+                <th scope="col" style="border: 1px solid #ccc;">Hours Worked</th>
+                <th scope="col" style="border: 1px solid #ccc;">Overtime Hours</th>
+                <th scope="col" style="border: 1px solid #ccc;">Actions</th> <!-- Added a new column for Actions -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employee %}
+            <tr>
+                <th scope="row" style="border: 1px solid #ccc;">{{forloop.counter}}</th>
+                <td style="border: 1px solid #ccc;">{{employee.employee_name}}</td>
+                <td style="border: 1px solid #ccc;">{{employee.employee_id}}</td>
+                <td style="border: 1px solid #ccc;">{{employee.hours_worked}}</td>
+                <td style="border: 1px solid #ccc;">{{employee.overtime_hours}}</td>
+                <td style="border: 1px solid #ccc;">
+                    <a href= "/delete_employee/{{employee.employee_id}}/"  class="delete-btn" >Delete</a>
+                </td> <!-- Added delete button here -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>

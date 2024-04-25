@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #009688; /* teal color for links */
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+    
+        a:hover {
+            color: #00796b; /* darker teal on hover */
+        }
+    
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            color: #009688; /* teal color for headings */
+            margin-bottom: 10px;
+        }
+    
+        p {
+            color: #666;
+        }
+    
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
+        }
+    
+        th, td {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: left;
+        }
+    
+        th {
+            background-color: #009688; /* teal color for table header */
+            color: #fff; /* white text color for table header */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2; /* light gray color for even rows */
+        }
+
+        tr:hover {
+            background-color: #e0e0e0; /* darker gray color for hover effect */
+        }
+    </style>
+
+</head>
+<body>
+    <a href="/admin/">Admin</a>
+    /
+    <a href="/about/">About</a>
+    /     
+    <a href="/contact/">Contact</a>
+    /
+    <a href="/employee/">Employee</a>
+
+    <h1>Table</h1>
+    <hr>
+    <h2>INFO Table</h2>
+    <hr>
+    
+    <table class="container">
+ 
+        <tr>
+            <th style="background-color: #007bff; color: #fff;">S.No</th>
+            <th style="background-color: #007bff; color: #fff;">Name</th>
+            <th style="background-color: #007bff; color: #fff;">Age</th>
+        </tr>
+        {% for people in peoples %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ people.name }}</td>
+            <td>{{ people.age }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
